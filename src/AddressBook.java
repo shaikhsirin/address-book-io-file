@@ -3,17 +3,12 @@ import java.util.List;
 import java.util.Scanner;
 public class AddressBook {
     static ContactDetails person = new ContactDetails();
-    /**
-     * Creating a List of ContactDetails of type String using ArrayList here Adding
-     * new elements in the List
-     */
-    static List<ContactDetails> contactDetailsList =  new ArrayList<ContactDetails>();
 
-    /**
-     * created method addNewContact() to create a new contacts to the AddressBook
-     */
-    public static void addNewContact() {
-        Scanner scanner = new Scanner(System.in);
+    static List<ContactDetails> contactDetailsList = new ArrayList<ContactDetails>();
+    static Scanner scanner = new Scanner(System.in);
+
+
+    public void addContact() {
         System.out.println("Enter First Name : ");
         String firstName = scanner.next();
         System.out.println("Enter Last Name : ");
@@ -30,7 +25,6 @@ public class AddressBook {
         long mobileNumber = scanner.nextLong();
         System.out.println("Enter your EmailId  : ");
         String emailId = scanner.next();
-        scanner.close();
 
         person = new ContactDetails(firstName, lastName, address, city, state, zipCode, mobileNumber, emailId);
         contactDetailsList.add(person);
@@ -38,9 +32,18 @@ public class AddressBook {
 
     }
 
-    /**
-     * created method printContact() to display the data
-     */
+    public void editContact() {
+        System.out.println("Enter the first name of person to edit Contact : ");
+        String firstName = scanner.next();
+        if (firstName.equalsIgnoreCase(person.getFirstName())) {
+            addContact();
+        } else {
+            System.out.println("The Entered First Name Is Not Match");
+            editContact();
+        }
+    }
+
+
     public static void printContact() {
         for (int i = 0; i < contactDetailsList.size(); i++) {
             person = contactDetailsList.get(i);
@@ -53,10 +56,5 @@ public class AddressBook {
         }
     }
 
-    public static void main(String[] args) {
-        /**
-         * calling method addNewContact()
-         */
-        addNewContact();
-    }
 }
+
