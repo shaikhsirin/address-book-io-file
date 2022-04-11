@@ -3,11 +3,16 @@ import java.util.List;
 import java.util.Scanner;
 public class AddressBook {
     static ContactDetails person = new ContactDetails();
-
+    /**
+     * Creating a List of ContactDetails of type String using ArrayList here Adding
+     * new elements in the List
+     */
     static List<ContactDetails> contactDetailsList = new ArrayList<ContactDetails>();
     static Scanner scanner = new Scanner(System.in);
 
-
+    /**
+     * created method addNewContact() to create a new contacts to the AddressBook
+     */
     public void addContact() {
         System.out.println("Enter First Name : ");
         String firstName = scanner.next();
@@ -32,6 +37,9 @@ public class AddressBook {
 
     }
 
+    /**
+     * created method editContact() to editing the contacts
+     */
     public void editContact() {
         System.out.println("Enter the first name of person to edit Contact : ");
         String firstName = scanner.next();
@@ -43,7 +51,24 @@ public class AddressBook {
         }
     }
 
+    /**
+     * created method deleteContact() to deleting the contacts
+     */
+    public void deleteContact() {
+        System.out.println("Enter the First name of Person to Delete Contact : ");
+        String deleteName = scanner.next();
+        if (deleteName.equalsIgnoreCase(person.getFirstName())) {
+            System.out.println("Deleted " + person.getFirstName() + " details");
+            person = null;
+        } else {
+            System.out.println("The Entered First Name is Not Matched");
+            deleteContact();
+        }
+    }
 
+    /**
+     * created method printContact() to display all the contacts
+     */
     public static void printContact() {
         for (int i = 0; i < contactDetailsList.size(); i++) {
             person = contactDetailsList.get(i);
@@ -55,6 +80,6 @@ public class AddressBook {
                     + "\n");
         }
     }
-
 }
+
 
