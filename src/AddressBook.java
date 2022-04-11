@@ -101,7 +101,12 @@ public class AddressBook {
         }
     }
 
-
+    /**
+     * create method searchByCity that is Ability to search Person across the
+     * multiple AddressBook by City
+     *
+     * @param name -passing City name
+     */
     public void searchByCity(String city) {
         List<ContactDetails> collect = contactDetailsList.stream().filter(p -> p.getCity().equalsIgnoreCase(city))
                 .collect(Collectors.toList());
@@ -110,7 +115,12 @@ public class AddressBook {
         }
     }
 
-
+    /**
+     * create method searchByState that is Ability to search Person across the
+     * multiple AddressBook by State
+     *
+     * @param name -passing State name
+     */
     public void searchByState(String state) {
         List<ContactDetails> collect = contactDetailsList.stream().filter(p -> p.getCity().equalsIgnoreCase(state))
                 .collect(Collectors.toList());
@@ -142,6 +152,15 @@ public class AddressBook {
     public void sortByName() {
         List<ContactDetails> list = contactDetailsList.stream().collect(Collectors.toList());
         list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
+                .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+    }
+
+    /**
+     * Declaring Sort Method Sorting The Details Of Contact By City
+     */
+    public void sortByCity() {
+        List<ContactDetails> list = contactDetailsList.stream().collect(Collectors.toList());
+        list.stream().sorted((g1, g2) -> ((String) g1.getCity()).compareTo(g2.getCity()))
                 .forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
     }
 
