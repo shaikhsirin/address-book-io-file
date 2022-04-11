@@ -101,7 +101,12 @@ public class AddressBook {
         }
     }
 
-
+    /**
+     * create method searchByCity that is Ability to search Person across the
+     * multiple AddressBook by City
+     *
+     * @param name -passing City name
+     */
     public void searchByCity(String city) {
         List<ContactDetails> collect = contactDetailsList.stream().filter(p -> p.getCity().equalsIgnoreCase(city))
                 .collect(Collectors.toList());
@@ -110,13 +115,34 @@ public class AddressBook {
         }
     }
 
-
+    /**
+     * create method searchByState that is Ability to search Person across the
+     * multiple AddressBook by State
+     *
+     * @param name -passing State name
+     */
     public void searchByState(String state) {
         List<ContactDetails> collect = contactDetailsList.stream().filter(p -> p.getCity().equalsIgnoreCase(state))
                 .collect(Collectors.toList());
         for (ContactDetails contact : collect) {
             System.out.println("Search result: " + contact);
         }
+    }
+
+    /**
+     * Declaring The Count Contacts Method By City Name Using Java Streams To Count
+     * The Contacts By using City Name
+     *
+     * @param cityName -passing the city name to count the contacts method
+     */
+    public void countContactsByUsingCity(String cityName) {
+        long count = 0;
+        long count1 = contactDetailsList.stream().filter(g -> g.getCity().equalsIgnoreCase(cityName)).count();
+        for (ContactDetails contact : contactDetailsList) {
+            count1 = count1 + count;
+        }
+        System.out.println("Contact List :" + count1);
+
     }
 
     /**
@@ -219,8 +245,8 @@ public class AddressBook {
     }
 
     /**
-     * create method searchByOptions() by searching the person using option like
-     * name, city, state and from previous menu
+     * create method viewByOptions() is used to view the options by searching the
+     * person using option like name, city, state and from previous menu
      */
     public void viewByOptions() {
         Scanner scanner = new Scanner(System.in);
@@ -251,5 +277,6 @@ public class AddressBook {
             }
         }
     }
-
 }
+
+
